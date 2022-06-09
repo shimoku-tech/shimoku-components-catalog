@@ -1,5 +1,7 @@
 """HTML beautiful components"""
 
+from typing import Optional
+
 
 def create_h1_title(title: str, subtitle: str) -> str:
 	return (
@@ -22,8 +24,7 @@ def beautiful_indicator(
 		)
 	return (
 		f"<head>"
-		"<style>.anomaly{height:121px; width:100%; border-radius:8px; padding:45px; background-position: center; background-size: cover; "
-		f"background-image: url({background_url}); color:#FFFFFF;}</style>"
+		f"<style>.anomaly{{height:121px; width:100%; border-radius:8px; padding:45px; background-position: center; background-size: cover;background-image: url({background_url}); color:#FFFFFF;}}</style>"
 		f"</head>"
 		f"<a href={href}>"
 		f"<div class={title}'>"
@@ -41,8 +42,8 @@ def button_click_to_new_tab(title: str, background_url: str, href: Optional[str]
 		href = background_url
 	return (
 		f"<head>"
-		"<style>.pug{height:180px; width:100%; border-radius:8px; padding:24px; background-position: center; background-size: cover; background-image: url({background_url}); color:#FFFFFF;}</style>"
-		"<style>.crea{font-size:24px; color:#FFFFFF; font-weight: 400;}</style>"
+		f"<style>.pug{{height:180px; width:100%; border-radius:8px; padding:24px; background-position: center; background-size: cover; background-image: url({background_url}); color:#FFFFFF;}}</style>"
+		f"<style>.crea{{font-size:24px; color:#FFFFFF; font-weight: 400;}}</style>"
 		f"</head>"
 		f"<a href={href} target='_blank'>"
 		f"<div class={title}>"
