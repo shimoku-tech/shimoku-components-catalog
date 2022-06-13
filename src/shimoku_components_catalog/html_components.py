@@ -5,12 +5,13 @@ from re import sub
 
 
 def create_h1_title(title: str, subtitle: str) -> str:
+	title_style: str = sub(r"\s+", '', title)
 	return (
 		f"<head>"
-		f"<style>.{title}{{height:100%; width:100%; border-radius:16px; padding:16px; background-color:#FAFAFB; color:#4C72F9;}}</style>"
+		f"<style>.{title_style}{{height:100%; width:100%; border-radius:16px; padding:16px; background-color:#FAFAFB; color:#4C72F9;}}</style>"
 		f"<style>.base{{color:#202A36;}}</style>"
 		f"</head>"
-		f"<div class={title}>"
+		f"<div class={title_style}>"
 		f"<h1>{title}</h1>"
 		f"<p class='base'>"
 		f"{subtitle}"
