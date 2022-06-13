@@ -60,3 +60,36 @@ def button_click_to_new_tab(title: str, background_url: str, href: Optional[str]
 		f"</div>"
 		f"</a>"
 	)
+
+
+def box_with_button(
+		href: str, title: str, line: str,
+		background: Optional[str] = None,
+		button_text: str = 'Visit now',
+) -> str:
+	if not background:
+		background = 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000'
+
+	return (
+		f"<head>"
+		f"<style>.rectangle"
+		f"{{height:350px; width:100%; border-radius:8px; padding:24px;"
+		f"background-size: cover;"
+		f"background-image: url('{background}');"
+		f"color:#FFFFFF;}}"
+		f"</style>"
+		f"<style>.button"
+		f"{{display: inline-block; position: absolute; background-color: var(--color-white);"
+		f"bottom: 10%; padding: 2% 10%; border-radius: var(--border-radius-m);"
+		f"font-size: 14px; color: var(--chart-C1); box-shadow: var(--box-shadow-m); transition-duration: 0.3s;}}"
+		f".button:hover{{background-color: var(--chart-C1); color: var(--color-white);}}"
+		f"</style>"
+		f"</head>"
+		f"<div class='rectangle'>"
+		f"<h1>{title}</h1>"  # Title
+		f"<p>{line}</p>"  # Li 1
+		f"<a href='{href}' target='_blank'>"  # link button
+		f"<div class='button'>{button_text}</div>"  # Text button
+		f"</a>"
+		f"</div>"
+	)
