@@ -147,3 +147,72 @@ def panel(
 		"</a>"
 		"</div>"
 	)
+
+
+def not_found(image: Optional[str] = None) -> str:
+	if not image:
+		image = (
+			'https://uploads-ssl.webflow.com/619f9fe98661d321dc3beec7/62cc28b5c21a8d0f1dbbdccc_illus-not-found-line.svg'
+		)
+	return (
+		f"<head>"
+		# Start styles BG
+		f"<style>.bg-not-found"
+		f"{{height: 50vh; width: 100%; border-radius: var(--border-radius-m);"
+		f"margin-top: 16px;"
+		f"margin-bottom: 32px;"
+		f"display: flex;"
+		f"justify-content: center;"
+		f"align-items: center;"
+		f"background-size: auto;"
+		f"background-position: center;"
+		f"background-repeat: no-repeat;"
+		f"background-color: var(--color-grey-100);"
+		f"background-image: url('{image}');"
+		f"color: var(--color-white);}}"
+		f"</style>"
+		# End styles BG
+		f"<link rel='stylesheet'"
+		f"href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0'/>"
+		# Star hint
+		f"<style>.hint"
+		f"{{display: flex; position: relative;"
+		f"height: 100%; width:100%; border-radius: var(--border-radius-m); padding:16px;"
+		f"grid-auto-flow: column; align-items: center;"
+		f"background-color: var(--color-warning); opacity: 0.7;"  # Change BG color
+		f"color: var(--color-white);}}"  # Change Text color
+		f"</style>"
+		# Start icons style
+		f"<style>.material-symbols-rounded"
+		f"{{display: flex; position: relative;"
+		f"opacity: 1;"
+		f"color: var(--color-white);}}"
+		f"</style>"
+		# End icons style
+		# Start styles text
+		f"<style>.title-hint"
+		f"{{display: flex; position: relative; width:100%;"
+		f"padding-left: 16px;"
+		f"opacity: 1;"
+		f"color:var(--color-white);}}"
+		f"</style>"
+		f"<style>.text-hint"
+		f"{{display: flex; position: relative; width:100%;"
+		f"font-size: 14px;"
+		f"padding-left: 16px;"
+		f"opacity: 1;"
+		f"color:var(--color-white);}}"
+		f"</style>"
+		# End hint
+		f"</head>"
+		f"<div class='bg-not-found'>"
+		f"</div>"
+		f"<div class='hint'>"
+		f"<span class='material-symbols-rounded'>info</span>"  # Change icon on https://fonts.google.com/icons?icon.style=Rounded
+		f"<div>"
+		f"<h3 class='title-hint'>Not found</h3>"
+		f"<p class='text-hint'>The page you’re looking for doesn't exist. Try to navigate to another page instead.</p>"  # Text hint
+		f"</div>"
+		f"</div>"
+	)
+
