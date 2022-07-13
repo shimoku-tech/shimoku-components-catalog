@@ -96,57 +96,107 @@ def box_with_button(
 
 
 def panel(
-		href: str, text: str, button_panel: str = 'Read more',
+		href: str, text: str,
+		button_panel: Optional[str] = None,
 		symbol_name: str = 'insights',
 ) -> str:
-	return (
-		"<head>"
-		# Import icons from g fonts
-		f"<link rel='stylesheet'"
-		"href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0' />"
-		# Start styles BG
-		"<style>.panel"
-		"{display: inline-grid; position: relative;"
-		"height: 100%; width:100%; border-radius: var(--border-radius-m); padding:16px;"
-		"grid-auto-flow: column; align-items: center;"
-		"background-color: var(--color-primary); opacity: 0.7;"  # Change BG panel color
-		"color: var(--color-white);}"  # Change text panel color
-		"</style>"
-		# End styles BG
-		# Start icons style
-		"<style>.material-symbols-rounded"
-		"{display: inline-grid; position: relative;"
-		"color: var(--color-white);}"
-		"</style>"
-		# End icons style
-		# Start styles text
-		"<style>.text-panel"
-		"{display: inline-grid; position: relative; width:100%;"
-		"font-size: 14px;"
-		"padding-left: 16px;"
-		"color:var(--color-white);}"
-		"</style>"
-		# End styles text
-		# Start styles button
-		"<style>.button-panel"
-		"{display: inline-grid; position: relative;"
-		"padding: 8px 16px; border-radius: var(--border-radius-m);"
-		"background-color: var(--color-white);"  # Change BG button color
-		"font-size: 14px; color: var(--color-primary);"  # Change text button color
-		"box-shadow: var(--box-shadow-m); transition-duration: 0.3s;}"
-		".button-panel:hover{background-color: var(--color-primary);"  # Change BG button hover color
-		"color: var(--color-white);}"  # Change text button hover color
-		"</style>"
-		# End styles button
-		"</head>"
-		"<div class='panel'>"
-		f"<span class='material-symbols-rounded'>{symbol_name}</span>"  # Search icon name on https://fonts.google.com/icons?icon.style=Rounded
-		f"<p class='text-panel'>{text}</p>"  # Text panel
-		f"<a href='{href}' target='_blank'>"  # link button
-		f"<div class='button-panel'>{button_panel}</div>"  # Text button
-		"</a>"
-		"</div>"
-	)
+	if button_panel:
+		return (
+			"<head>"
+			# Import icons from g fonts
+			f"<link rel='stylesheet'"
+			"href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0' />"
+			# Start styles BG
+			"<style>.panel"
+			"{display: inline-grid; position: relative;"
+			"height: 100%; width:100%; border-radius: var(--border-radius-m); padding:16px;"
+			"grid-auto-flow: column; align-items: center;"
+			"background-color: var(--color-primary); opacity: 0.7;"  # Change BG panel color
+			"color: var(--color-white);}"  # Change text panel color
+			"</style>"
+			# End styles BG
+			# Start icons style
+			"<style>.material-symbols-rounded"
+			"{display: inline-grid; position: relative;"
+			"color: var(--color-white);}"
+			"</style>"
+			# End icons style
+			# Start styles text
+			"<style>.text-panel"
+			"{display: inline-grid; position: relative; width:100%;"
+			"font-size: 14px;"
+			"padding-left: 16px;"
+			"color:var(--color-white);}"
+			"</style>"
+			# End styles text
+			# Start styles button
+			"<style>.button-panel"
+			"{display: inline-grid; position: relative;"
+			"padding: 8px 16px; border-radius: var(--border-radius-m);"
+			"background-color: var(--color-white);"  # Change BG button color
+			"font-size: 14px; color: var(--color-primary);"  # Change text button color
+			"box-shadow: var(--box-shadow-m); transition-duration: 0.3s;}"
+			".button-panel:hover{background-color: var(--color-primary);"  # Change BG button hover color
+			"color: var(--color-white);}"  # Change text button hover color
+			"</style>"
+			# End styles button
+			"</head>"
+			"<div class='panel'>"
+			f"<span class='material-symbols-rounded'>{symbol_name}</span>"  # Search icon name on https://fonts.google.com/icons?icon.style=Rounded
+			f"<p class='text-panel'>{text}</p>"  # Text panel
+			f"<a href='{href}' target='_blank'>"  # link button
+			f"<div class='button-panel'>{button_panel}</div>"  # Text button
+			"</a>"
+			"</div>"
+		)
+	else:
+		return (
+			"<head>"
+			# Import icons from g fonts
+			f"<link rel='stylesheet'"
+			"href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0' />"
+			# Start styles BG
+			"<style>.panel"
+			"{display: inline-grid; position: relative;"
+			"height: 100%; width:100%; border-radius: var(--border-radius-m); padding:16px;"
+			"grid-auto-flow: column; align-items: center;"
+			"background-color: var(--color-primary); opacity: 0.7;"  # Change BG panel color
+			"color: var(--color-white);}"  # Change text panel color
+			"</style>"
+			# End styles BG
+			# Start icons style
+			"<style>.material-symbols-rounded"
+			"{display: inline-grid; position: relative;"
+			"color: var(--color-white);}"
+			"</style>"
+			# End icons style
+			# Start styles text
+			"<style>.text-panel"
+			"{display: inline-grid; position: relative; width:100%;"
+			"font-size: 14px;"
+			"padding-left: 16px;"
+			"color:var(--color-white);}"
+			"</style>"
+			# End styles text
+			# Start styles button
+			"<style>.button-panel"
+			"{display: inline-grid; position: relative;"
+			"padding: 8px 16px; border-radius: var(--border-radius-m);"
+			"background-color: var(--color-white);"  # Change BG button color
+			"font-size: 14px; color: var(--color-primary);"  # Change text button color
+			"box-shadow: var(--box-shadow-m); transition-duration: 0.3s;}"
+			".button-panel:hover{background-color: var(--color-primary);"  # Change BG button hover color
+			"color: var(--color-white);}"  # Change text button hover color
+			"</style>"
+			# End styles button
+			"</head>"
+			"<div class='panel'>"
+			f"<span class='material-symbols-rounded'>{symbol_name}</span>"  # Search icon name on https://fonts.google.com/icons?icon.style=Rounded
+			f"<p class='text-panel'>{text}</p>"  # Text panel
+			f"<a href='{href}' target='_blank'>"  # link button
+			"</a>"
+			"</div>"
+		)
 
 
 def not_found(image: Optional[str] = None) -> str:
