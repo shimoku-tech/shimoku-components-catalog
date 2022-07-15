@@ -337,3 +337,49 @@ def work_in_progress(image: Optional[str] = None, image_option: Optional[str] = 
 		f"</div>"
 	)
 
+
+def go_back_button(
+		note: Optional[str] = None, h1: Optional[str] = None,
+		subtitle: Optional[str] = None,
+) -> str:
+	init_html: str = (
+		f"<head>"
+		f"<link rel='stylesheet'"
+	    f"href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0' />"
+		# Start styles bg
+		f"<style>.head-block"
+		f"{{height:100%; width:100%;"
+		f"padding:24px; font-style: italic;"
+		f"background: var(--color-black); "
+		f"color:var(--color-white);}}"
+		f"</style>"
+		# End styles bg
+		f"<style>.note{{font-size: 12px; color: #E6E6E6;}}</style>"  # Styles note text
+		f"<style>.subtitle{{font-size: 20px; font-style: italic; color: #E6E6E6;}}</style>"  # Styles subtitle text
+		# Start styles button bg
+		f"<style>.button-xs"
+		f"{{padding:16px; background: var(--color-grey-800);"
+		f"border-radius: 8px;"
+		f"display: inline-flex;"
+		f"margin-bottom: 8px;"
+		f"transition-duration: 0.3s;}}"
+		f".button-xs:hover {{background-color: var(--color-grey-800); opacity: 0.4;}}"
+		f"</style>"
+		# End styles button bg
+		f"</head>"
+		f"<div class='head-block'>"
+		f"<div class='button-xs' onclick='history.back()'>"
+		f"<span class='material-symbols-rounded'>arrow_back</span>"
+		f"</div>"
+	)
+
+	variable_html: str = ''
+	if note:
+		variable_html = f"<p class='note'>{note}<p>"
+	if h1:
+		variable_html = variable_html + f"<h1>{h1}</h1>"
+	if subtitle:
+		variable_html = variable_html + f"<p class='subtitle'>{subtitle}</p>"
+	variable_html = variable_html + "</div>"
+
+	return init_html + variable_html
