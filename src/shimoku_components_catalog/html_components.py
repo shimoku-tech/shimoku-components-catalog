@@ -2,6 +2,150 @@
 
 from typing import Optional
 from re import sub
+from uuid import uuid1
+
+
+def create_h1_title_with_modal(
+		title: str, subtitle: str, modal_title: Optional[str] = None,
+		icon_url: str = 'https://uploads-ssl.webflow.com/619f9fe98661d321dc3beec7/63594ccf3f311a98d72faff7_suite-customer-b.svg',
+		modal_text: str = "You can click the X in the corner or click the overlay to close this modal. "
+						  "This is a nice way to show additional information.",
+		text_color: str = 'var(--background-paper)',
+		background_color: str = 'var(--color-black)', modal_icon_color: str = 'var(--chart-C1)',
+		modal_icon_hover_color: str = 'var(--color-primary-dark)'
+) -> str:
+
+	uuid_str = str(uuid1())
+	html = (
+			"<head>"
+			"<link rel='stylesheet'"
+			"href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0' />"
+			"<style>"  # Styles title
+			f".component-title{uuid_str}{{height:auto; width:100%; "
+			"border-radius:16px; padding:2%;"
+			"display:flex; align-items:center; font:-style: Rubik;"
+			f"background-color:{background_color}; color:{text_color};}}"
+			"</style>"
+			# Start icons style
+			f"<style>.big-icon-banner"
+			"{width:48px; height: 48px; display: flex;"
+			"margin-right: 16px;"
+			"justify-content: center;"
+			"align-items: center;"
+			"background-size: contain;"
+			"background-position: center;"
+			"background-repeat: no-repeat;}"
+			"</style>"
+			# End icons style
+			f"<style>.base{uuid_str}{{color:var(--color-black);}}</style>"
+			"</head>"  # Styles subtitle 
+			f"<style>.button-block{uuid_str}{{position: absolute; right: 25px; top: 25px}}</style>"
+			# Start styles button
+			"<style>.container"
+			"{text-align: left;}"
+			"</style>"
+			f"<style>.button-modal-icon{uuid_str}"
+			"{appearance: none;"
+			f"background: {modal_icon_color};"  # change color bg button icon
+			"border-radius: var(--border-radius-s);"
+			"color: white;"
+			"cursor: pointer;"
+			"display: flex;"
+			"padding: 8px;}"
+			f".button-modal-icon{uuid_str}:hover{{background-color: {modal_icon_hover_color}; transition:0.2s;}}"  # change color bg hover
+			"</style>"
+			# Start styles modal
+			"<style>.details-modal"
+			"{background: var(--color-white);"
+			"border-radius: 24px;"
+			"padding: 32px;"
+			"z-index:9999;"
+			"box-shadow: var(--box-shadow-xl);"
+			"top: 50%;"
+			"left: 50%;"
+			"pointer-events: none;"
+			"position: fixed;"
+			"transform: translate(-50%, -50%);"
+			"width: 60%;"
+			"text-align: left;"
+			"max-height: 70vh;"
+			"display: flex;"
+			"flex-direction: column;}"
+			"</style>"
+			# Start styles modal close
+			"<style>.details-modal-close"
+			"{align-items: center;"
+			"color: var(--color-black);"
+			"display: flex;"
+			"height: 2.5em;"
+			"padding:16px;"
+			"justify-content: center;"
+			"cursor: pointer;"
+			"pointer-events: none;"
+			"position: absolute;"
+			"right: 0;"
+			"top: 0;"
+			"width: 2.5em;}"
+			".details-modal-close:hover {background-color: var(--color-grey-200); margin: 4px; opacity: 0.7; "
+			"border-radius:50%; transition:0.2s;}"
+			"</style>"
+			# Start styles modal content
+			"<style>.details-modal-content"
+			"{pointer-events: all;"
+			"overflow: auto;}"
+			"</style>"
+			# Start styles modal overlay
+			"<style>.details-modal-overlay"
+			"{transition: opacity 0.2s ease-out;"
+			"pointer-events: none;"
+			"background:#0f172a;"
+			"z-index:99;"
+			"position: fixed;"
+			"opacity: 0;"
+			"bottom: 0; right: 0; left: 0; top: 0;}"
+			"details[open] .details-modal-overlay {pointer-events: all;opacity: 0.5; z-index: 9999;}"
+			"</style>"
+			# Start styles details generals
+			"<style>details summary {"
+			"list-style: none;}"
+			"details summary:focus {"
+			"outline: none;}"
+			"details summary::-webkit-details-marker {"
+			"display: none;}"
+			"</style>"
+			"</head>"
+			# End styles button
+			f"<div class='component-title{uuid_str}'>"
+			f"<div class='big-icon-banner'><img src={icon_url}></div>"  # Change big icon URL
+			"<div class='text-block'>"
+			f"<h1>{title}</h1>"  # Title
+			f"<p>{subtitle}</p>"  # Subtitle
+			"</div>" + (
+				f"<div class='button-block{uuid_str}'>"  # Start Icon modal
+				"<div class='button'>"
+				"<div class='container'>"
+				"<details>"
+				"<summary>"
+				f"<div class='button-modal-icon{uuid_str}'>"
+				"<span class='material-symbols-rounded'>info</span>"  # Icon button, search more icons on google icons
+				"</div>"
+				"<div class='details-modal-overlay'></div>"
+				"</summary>"
+				"<div class='details-modal'>"
+				"<div class='details-modal-close'>"
+				"<span class='material-symbols-rounded'>close</span>"
+				"</div>"
+				"<div class='details-modal-title'>"
+				f"<h4 class='base{uuid_str}'>{modal_title}</h4>"  # Title modal text
+				"</div>"
+				"<div class='details-modal-content'>"
+				f"<p class='base{uuid_str}'>{modal_text}</p>"
+				"</div>"
+				"</div>"
+				"</details></div></div></div>" if modal_title else "") +
+			"</div></div>"
+	)
+	return html
 
 
 def create_h1_title(title: str, subtitle: str) -> str:
@@ -498,7 +642,7 @@ def pop_up_button(text: str = 'Aprender más') -> str:
 
 def accordion_button(
 		main_text: str = 'Más información',
-		internal_text: str = 'Lorem fistrum te voy a borrar el cerito pecador a gramenawer diodeno papaar papaar por'
+		internal_text: str = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 ) -> str:
 	return (
 		f"<head>"
